@@ -1,0 +1,40 @@
+---
+title: "p8105_hw1_db3180"
+author: "Divya Bisht"
+date: 9/18/2018
+output: github_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+# Problem 1
+Creating a data frame:
+
+```{r}
+  problem1_df = tibble( 
+    first_dist = runif(10, min = 0, max = 5),
+    a_logical = first_dist > 2,
+    b_char = c("blue", "green", "blue", "green", "blue", "green", "blue", "green", "blue", "green"),
+    c_factor = factor(b_char))
+```
+
+Converting variables
+```{r}
+as.numeric(a_logical, b_char, c_factor)
+```
+#Problem 2
+Plotting
+
+```{r}
+set.seed(10)
+
+plot_df = tibble(
+  x = rnorm(1000),
+  y = rnorm(1000),
+)
+
+ggplot(plot_df, aes(x = x)) + geom_histogram()
+```
+
+
