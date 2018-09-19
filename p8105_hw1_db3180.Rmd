@@ -16,8 +16,27 @@ Creating a data frame:
     first_dist = runif(10, min = 0, max = 5),
     a_logical = first_dist > 2,
     b_char = c("blue", "green", "blue", "green", "blue", "green", "blue", "green", "blue", "green"),
-    c_factor = factor(b_char))
+    c_factor = factor(b_char)
+)
+
 ```
+
+The mean of the first_dist variable is `r mean(problem1_df$first_dist)'.
+
+The mean of the a_logical variable is 'r mean(problem1_df$a_logical)'
+
+The mean of the b_char variable is 'r mean(problem1_df$b_char)'
+
+The mean of the c_factor variable is 'r mean(problem1_df$c_factor)'
+
+It is only possible to take the mean of the first 'first_dist' and 'a_logical' vectors as they are numeric. The 'b_char' and 'c_factor' variables are characters and therefore cannot have a mean calculated. 
+
+```{r}
+as.numeric(problem1_df$a_logical)
+as.numeric(problem1_df$b_char)
+as.numeric(problem1_df$c_factor)
+```
+
 
 Converting variables
 ```{r}
