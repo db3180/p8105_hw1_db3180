@@ -51,17 +51,41 @@ as.numeric(convert_factor)
 Converting the character variable from character to factor to numeric was possible, but converting the factor to character and then to numeric was not possible. This is because you can't convert character variables into numeric variables. 
 
 #Problem 2
-Plotting
 
+Dataframe:
 ```{r}
 set.seed(10)
 
 plot_df = tibble(
   x = rnorm(1000),
   y = rnorm(1000),
-)
-
-ggplot(plot_df, aes(x = x)) + geom_histogram()
+  plot_logic = x + y > 1,
+  num_coerce = as.numeric(plot_logic),
+  factor_coerce = as.factor(plot_logic)
+  )
 ```
+
+**Size of the dataset:** 
+Rows: 'r nrow(plot_df)'
+Columns: 'r ncol(plot_df)'
+**Mean of x:** 'r mean(plot_df$x)'
+**Median of x:** 'r median(plot_df$x)'
+**Proportion of cases for which the logical vector is true:** 'r mean(plot_df$plot_logic)'
+
+Make a scatterplot of y vs x:
+```{r}
+ggplot(plot_df, aes(x, y, color = plot_logic)) + geom_point()
+```
+
+```{r}
+ggplot(plot_df, aes(x, y, color = num_coerce)) + geom_point()
+```
+The color scale is showing a gradient because it puts the plot on a continuous scale even though we have only two values. Therefore, only two colors show in the plot. 
+```{r}
+ggplot(plot_df, aes(x, y, color = factor_coerce)) + geom_point()
+```
+
+
+
 
 
